@@ -15,19 +15,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Group root = new Group();
-        Scene scene = new Scene(root, Color.DARKGRAY);
-
-        Image icon = new Image("img.png");
-        primaryStage.getIcons().add(icon);
-        primaryStage.setTitle("Проверка расходов");
-        primaryStage.setWidth(420);
-        primaryStage.setHeight(420);
-        primaryStage.setResizable(false);
-        //primaryStage.setX(500);
-        //primaryStage.setY(250);
-        primaryStage.setFullScreen(true);
-        primaryStage.setFullScreenExitHint("You can't escape unless you press \"q\"");
-        primaryStage.setFullScreenExitKeyCombination(KeyCombination.valueOf("q"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
 
         primaryStage.setScene(scene);
         primaryStage.show();
