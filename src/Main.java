@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -15,10 +16,16 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Group root = new Group();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 600, 600, Color.DARKGRAY);
         Stage stage = new Stage();
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Text text = new Text();
+        text.setText("Жить в эпоху свершений, имея возвышенный нрав, к сожалению трудно");
+        text.setX(50);
+        text.setY(50);
+
+        root.getChildren().add(text);
+        stage.setScene(scene);
+        stage.show();
     }
 }
