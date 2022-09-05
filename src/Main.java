@@ -1,5 +1,7 @@
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
@@ -14,20 +16,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Group root = new Group();
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene scene = new Scene(root, Color.DARKGRAY);
-
-        Image icon = new Image("img.png");
-        primaryStage.getIcons().add(icon);
         primaryStage.setTitle("Проверка расходов");
-        primaryStage.setWidth(420);
-        primaryStage.setHeight(420);
-        primaryStage.setResizable(false);
-        //primaryStage.setX(500);
-        //primaryStage.setY(250);
-        primaryStage.setFullScreen(true);
-        primaryStage.setFullScreenExitHint("You can't escape unless you press \"q\"");
-        primaryStage.setFullScreenExitKeyCombination(KeyCombination.valueOf("q"));
 
         primaryStage.setScene(scene);
         primaryStage.show();
