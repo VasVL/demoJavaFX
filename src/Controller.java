@@ -1,36 +1,34 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
 
-public class Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Controller implements Initializable {
 
     @FXML
-    private Arc myCircle;
-    private double x;
-    private double y;
+    private Label myLabel;
 
-    public void up(ActionEvent e){
-        //System.out.println("Up!");
-        myCircle.setCenterY(y -= 3);
-        myCircle.setStartAngle(135);
+    @FXML
+    private ChoiceBox<String> myChoiceBox;
+
+    private String[] destiny = { "Death", "Slavery", "Anime" };
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        myChoiceBox.getItems().addAll(destiny);
+        myChoiceBox.setOnAction(this::getDestiny);
     }
 
-    public void down(ActionEvent e){
-        //System.out.println("Down!");
-        myCircle.setCenterY(y += 3);
-        myCircle.setStartAngle(-45);
-    }
+    public void getDestiny(ActionEvent event){
 
-    public void right(ActionEvent e){
-        //System.out.println("Right!");
-        myCircle.setCenterX(x += 3);
-        myCircle.setStartAngle(45);
-    }
-
-    public void left(ActionEvent e){
-        //System.out.println("Left!");
-        myCircle.setCenterX(x -= 3);
-        myCircle.setStartAngle(-135);
+        String myDestiny = myChoiceBox.getValue();
+        myLabel.setText(myDestiny);
     }
 }
