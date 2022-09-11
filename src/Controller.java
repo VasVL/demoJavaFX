@@ -1,10 +1,10 @@
-import javafx.event.ActionEvent;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.Circle;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,20 +15,31 @@ public class Controller implements Initializable {
     private Label myLabel;
 
     @FXML
-    private ChoiceBox<String> myChoiceBox;
+    private Spinner<Integer> mySpinner;
 
-    private String[] destiny = { "Death", "Slavery", "Anime" };
+    int currentValue;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        myChoiceBox.getItems().addAll(destiny);
-        myChoiceBox.setOnAction(this::getDestiny);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
+
+        valueFactory.setValue(0);
+
+        mySpinner.setValueFactory(valueFactory);
+
+        currentValue = mySpinner.getValue();
+
+        myLabel.setText(String.valueOf(currentValue));
+
+        mySpinner.valueProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
+                currentValue = mySpinner.getValue();
+
+                myLabel.setText(String.valueOf(currentValue));
+            }
+        });
     }
 
-    public void getDestiny(ActionEvent event){
-
-        String myDestiny = myChoiceBox.getValue();
-        myLabel.setText(myDestiny);
-    }
 }
