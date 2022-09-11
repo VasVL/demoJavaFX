@@ -1,36 +1,26 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.Circle;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Controller {
 
+    // ImageView is a Node used for painting images loaded with Images
+
+    // Image = photograph
+
+    // ImageView = picture frame
+
     @FXML
-    private Arc myCircle;
-    private double x;
-    private double y;
+    ImageView myImageView;
+    @FXML
+    Button myButton;
 
-    public void up(ActionEvent e){
-        //System.out.println("Up!");
-        myCircle.setCenterY(y -= 3);
-        myCircle.setStartAngle(135);
+    Image myImage = new Image(getClass().getResourceAsStream("left.png"));
+
+    public void displayImage(){
+        myImageView.setImage(myImage);
     }
 
-    public void down(ActionEvent e){
-        //System.out.println("Down!");
-        myCircle.setCenterY(y += 3);
-        myCircle.setStartAngle(-45);
-    }
-
-    public void right(ActionEvent e){
-        //System.out.println("Right!");
-        myCircle.setCenterX(x += 3);
-        myCircle.setStartAngle(45);
-    }
-
-    public void left(ActionEvent e){
-        //System.out.println("Left!");
-        myCircle.setCenterX(x -= 3);
-        myCircle.setStartAngle(-135);
-    }
 }
